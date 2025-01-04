@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phoenix32 Tech Products</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .product-card {
+            transition: all 0.4s ease;
+            perspective: 1000px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) rotateX(10deg);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #0066ff, #00ff66);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <header class="fixed w-full bg-white shadow-lg z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <img src="https://image.similarpng.com/very-thumbnail/2022/01/Luxury-gold-eagle-phoenix-logo-design-on-transparent-background-PNG.png" alt="Phoenix32 Logo" class="h-8">
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-800 hover:text-blue-600">Home</a>
+                    <a href="products.html" class="nav-link text-gray-800 hover:text-blue-600">Products</a>
+                    <a href="#" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition">Buy Now</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24 container mx-auto px-4">
+        <section>
+            <h1 class="text-5xl font-bold mb-6 text-center gradient-text">Phoenix32 Tech Collection</h1>
+            <p class="text-xl text-gray-700 text-center max-w-2xl mx-auto mb-12">
+                Cutting-edge devices and protection designed for professionals and tech enthusiasts
+            </p>
+
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Laptop Product -->
+                <div class="bg-white rounded-2xl shadow-2xl p-6 product-card">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/400x300" alt="Phoenix32 Quantum Laptop" class="rounded-t-lg mb-4 w-full h-64 object-cover">
+                        <span class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm">New</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-2xl font-bold mb-3 text-blue-600">Quantum Laptop</h3>
+                        <ul class="text-gray-600 mb-4 space-y-2">
+                            <li>• 16" 4K OLED Display</li>
+                            <li>• AMD Ryzen 9 Processor</li>
+                            <li>• 32GB RAM, 1TB SSD</li>
+                            <li>• NVIDIA RTX 4070 GPU</li>
+                        </ul>
+                        <div class="flex justify-between items-center">
+                            <p class="text-2xl font-bold text-green-600">$1,799.99</p>
+                            <button class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phone Product -->
+                <div class="bg-white rounded-2xl shadow-2xl p-6 product-card">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/400x300" alt="Phoenix32 Horizon Phone" class="rounded-t-lg mb-4 w-full h-64 object-cover">
+                        <span class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm">Pro</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-2xl font-bold mb-3 text-green-600">Horizon Phone</h3>
+                        <ul class="text-gray-600 mb-4 space-y-2">
+                            <li>• 6.7" AMOLED Display</li>
+                            <li>• Snapdragon 8 Gen 2</li>
+                            <li>• 12GB RAM, 512GB Storage</li>
+                            <li>• 5G & Wireless Charging</li>
+                        </ul>
+                        <div class="flex justify-between items-center">
+                            <p class="text-2xl font-bold text-green-600">$1,099.99</p>
+                            <button class="bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desktop Computer -->
+                <div class="bg-white rounded-2xl shadow-2xl p-6 product-card">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/400x300" alt="Phoenix32 Titan Desktop" class="rounded-t-lg mb-4 w-full h-64 object-cover">
+                        <span class="absolute top-4 right-4 bg-purple-500 text-white px-3 py-1 rounded-full text-sm">Gaming</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-2xl font-bold mb-3 text-purple-600">Titan Desktop</h3>
+                        <ul class="text-gray-600 mb-4 space-y-2">
+                            <li>• Intel i9-13900K Processor</li>
+                            <li>• NVIDIA RTX 4090 GPU</li>
+                            <li>• 64GB DDR5 RAM</li>
+                            <li>• 2TB NVMe SSD</li>
+                        </ul>
+                        <div class="flex justify-between items-center">
+                            <p class="text-2xl font-bold text-green-600">$2,499.99</p>
+                            <button class="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Laptop Cover -->
+                <div class="bg-white rounded-2xl shadow-2xl p-6 product-card">
+                    <div class="relative">
+                        <img src ="https://via.placeholder.com/400x300" alt="Phoenix32 Laptop Cover" class="rounded-t-lg mb-4 w-full h-64 object-cover">
+                        <span class="absolute top-4 right-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-sm">Accessory</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-2xl font-bold mb-3 text-yellow-600">Phoenix32 Laptop Cover</h3>
+                        <ul class="text-gray-600 mb-4 space-y-2">
+                            <li>• Durable Material</li>
+                            <li>• Water-Resistant</li>
+                            <li>• Fits 15" to 17" Laptops</li>
+                            <li>• Lightweight and Portable</li>
+                        </ul>
+                        <div class="flex justify-between items-center">
+                            <p class="text-2xl font-bold text-green-600">$49.99</p>
+                            <button class="bg-yellow-600 text-white px-6 py-2 rounded-full hover:bg-yellow-700">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white py-6 mt-12">
+        <div class="container mx-auto text-center">
+            <p class="text-gray-600">© 2023 Phoenix32 Tech. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phoenix32 - Empowering Technology, Driving Innovation</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary: #0066ff;
+            --accent: #00ff66;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+        }
+
+        .service-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.2);
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(0,102,255,0.1), rgba(0,255,102,0.1));
+        }
+
+        .testimonial-card {
+            transition: transform 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-card {
+            transition: transform 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="fixed w-full bg-white shadow-lg z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <img src="https://image.similarpng.com/very-thumbnail/2022/01/Luxury-gold-eagle-phoenix-logo-design-on-transparent-background-PNG.png" alt="Phoenix32 Logo" class="h-8">
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-800 hover:text-blue-600">Home</a>
+                    <a href="about.html" class="nav-link text-gray-800 hover:text-blue-600">About Us</a>
+                    <a href="services.html" class="nav-link text-gray-800 hover:text-blue-600">Services</a>
+                    <a href="blog.html" class="nav-link text-gray-800 hover:text-blue-600">Blog</a>
+                    <a href="portfolio.html" class="nav-link text-gray-800 hover:text-blue-600">Portfolio</a>
+                    <a href="careers.html" class="nav-link text-gray-800 hover:text-blue-600">Careers</a>
+                    <a href="contact.html" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition">Contact</a>
+                </nav>
+                <button class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-gradient min-h-screen flex items-center pt-16">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 text-white">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-6">Empowering Technology, Driving Innovation</h1>
+                        <p class="text-xl mb-8 opacity-90">Transform your business with cutting-edge IT solutions and expert consulting services.</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">Get Started</a>
+                            <a href="#" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 mt-12 md:mt-0">
+                        <img src="/api/placeholder/600/400" alt="Innovation" class="rounded-lg shadow-2xl">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="stat-card p-6 rounded-lg text-center">
+                        <h3 class="text-4xl font-bold text-blue-600 mb-2">500+</h3>
+                        <p class="text-gray-600">Projects Completed</p>
+                    </div>
+                    <div class="stat-card p-6 rounded-lg text-center">
+                        <h3 class="text-4xl font-bold text-blue-600 mb-2">98%</h3>
+                        <p class="text-gray-600">Client Satisfaction</p>
+                    </div>
+                    <div class="stat-card p-6 rounded-lg text-center">
+                        <h3 class="text-4xl font-bold text-blue-600 mb-2">50+</h3>
+                        <p class="text-gray-600">Tech Experts</p>
+                    </div>
+                    <div class="stat-card p-6 rounded-lg text-center">
+                        <h3 class="text-4xl font-bold text-blue-600 mb-2">24/7</h3>
+                        <p class="text-gray-600">Support Available</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">What Our Clients Say</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="testimonial-card bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <img src="/api/placeholder/40/40" alt="Client" class="rounded-full">
+                            <div class="ml-4">
+                                <h4 class="font-semibold">Sarah Johnson</h4>
+                                <p class="text-gray-600">CEO, TechCorp</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700">"Phoenix32 transformed our IT infrastructure. Their cloud solutions have significantly improved our efficiency."</p>
+                    </div>
+                    <div class="testimonial-card bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <img src="/api/placeholder/40/40" alt="Client" class="rounded-full">
+                            <div class="ml-4">
+                                <h4 class="font-semibold">John Doe</h4>
+                                <p class="text-gray-600">CTO, InnovateX</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700">"The team at Phoenix32 is exceptional. Their expertise in automation has streamlined our processes."</p>
+                    </div>
+                    <div class="testimonial-card bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <img src="/api/placeholder/40/40" alt="Client" class="rounded-full">
+                            <div class="ml-4">
+                                <h4 class="font-semibold">Emily Smith</h4>
+                                <p class="text-gray-600">Manager, Creative Agency</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700">"Working with Phoenix32 has been a game-changer for our business. Highly recommend!"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">Latest Tech Insights</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="news-card bg-white rounded-lg overflow-hidden shadow-lg">
+                        <img src="/api/placeholder/400/200" alt="News" class="w-full">
+                        <div class="p-6">
+                            <h3 class="font-semibold text-xl mb-2">Cloud Computing Trends 2024</h3>
+                            <p class="text-gray-600 mb-4">Exploring the latest developments in cloud technology...</p>
+                            <a href="#" class="text-blue-600 font-semibold hover:text-blue-700">Read More →</a>
+                        </div>
+                    </div>
+                    <div class="news-card bg-white rounded-lg overflow-hidden shadow-lg">
+                        <img src="/api/placeholder/400/200" alt="News" class="w-full">
+                        <div class="p-6">
+                            <h3 class="font-semibold text-xl mb-2">AI in Business: The Future</h3>
+                            <p class="text-gray-600 mb-4">How artificial intelligence is shaping the business landscape...</p>
+                            <a href="#" class="text-blue-600 font-semibold hover:text-blue-700">Read More →</a>
+                        </div>
+                    </div>
+                    <div class="news-card bg-white rounded-lg overflow-hidden shadow-lg">
+                        <img src="/api/placeholder/400/200" alt="News" class="w-full">
+                        <div class="p-6">
+                            <h3 class="font-semibold text-xl mb-2">Cybersecurity Best Practices</h3>
+                            <p class="text-gray-600 mb-4">Essential tips to protect your business from cyber threats...</p>
+                            <a href="#" class="text-blue-600 font-semibold hover:text-blue-700">Read More →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 hero-gradient">
+            <div class="container mx-auto px-4 text-center text-white">
+                <h2 class="text-3xl font-bold mb-6">Ready to Transform Your Business?</h2>
+                <p class="text-xl mb-8">Let's discuss how we can help you achieve your technology goals.</p>
+                <a href="#" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">Schedule a Consultation</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <p>&copy; 2024 Phoenix32. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-blue-400">Privacy Policy</a>
+                    <a href="#" class="hover:text-blue-400">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

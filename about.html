@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Phoenix32</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary: #0066ff;
+            --accent: #00ff66;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="fixed w-full bg-white shadow-lg z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <img src="https://image.similarpng.com/very-thumbnail/2022/01/Luxury-gold-eagle-phoenix-logo-design-on-transparent-background-PNG.png" alt="Phoenix32 Logo" class="h-8"><h1><b>Phoenix 32</b></h1>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-800 hover:text-blue-600">Home</a>
+                    <a href="about.html" class="nav-link text-gray-800 hover:text-blue-600">About Us</a>
+                    <a href="services.html" class="nav-link text-gray-800 hover:text-blue-600">Services</a>
+                    <a href="blog.html" class="nav-link text-gray-800 hover:text-blue-600">Blog</a>
+                    <a href="portfolio.html" class="nav-link text-gray-800 hover:text-blue-600">Portfolio</a>
+                    <a href="careers.html" class="nav-link text-gray-800 hover:text-blue-600">Careers</a>
+                    <a href="products.html" class="nav-link text-gray-800 hover:text-blue-600">Products</a>
+                    <a href="contact.html" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition">Contact</a>
+                </nav>
+                <button class="md:hidden" id="burger">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-16">
+        <section class="container mx-auto px-4 py-20">
+            <div data-aos="fade-up" class="text-center mb-16">
+                <h1 class="text-5xl font-bold mb-6 gradient-text">Innovating Tomorrow's Technology</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Phoenix32 is a cutting-edge technology company specializing in AI-driven solutions, cloud computing, and digital transformation. Since 2015, we've been helping businesses reshape their digital future.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-20">
+                <div data-aos="fade-up" data-aos-delay="100" class="bg-white p-6 rounded-lg shadow-lg card-hover">
+                    <div class="text-3xl mb-4 text-blue-600">🎯</div>
+                    <h3 class="text-xl font-bold mb-3">Our Mission</h3>
+                    <p class="text-gray-600">To empower businesses through innovative technology solutions that drive growth and efficiency in the digital age.</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200" class="bg-white p-6 rounded-lg shadow-lg card-hover">
+                    <div class="text-3xl mb-4 text-blue-600">👁️</div>
+                    <h3 class="text-xl font-bold mb-3">Our Vision</h3>
+                    <p class="text-gray-600">To be the global leader in technological innovation, setting new standards for digital excellence and sustainable solutions.</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="300" class="bg-white p-6 rounded-lg shadow-lg card-hover">
+                    <div class="text-3xl mb-4 text-blue-600">💫</div>
+                    <h3 class="text-xl font-bold mb-3">Our Values</h3>
+                    <p class="text-gray-600">Innovation, integrity, collaboration, and commitment to excellence drive everything we do.</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-20" data-aos="fade-up">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-4">Our Impact</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="text-2xl font-bold text-blue-600 mr-4">500+</div>
+                                <div class="text-gray-600">Successful Projects Delivered</div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="text-2xl font-bold text-blue-600 mr-4">50+</div>
+                                <div class="text-gray-600">Countries Served</div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="text-2xl font-bold text-blue-600 mr-4">98%</div>
+                                <div class="text-gray-600">Client Satisfaction Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="/api/placeholder/500/300" alt="Impact Visualization" class="rounded-lg shadow-md">
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-8">Our Leadership Team</h2>
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="card-hover">
+                        <img src="/api/placeholder/200/200" alt="CEO" class="rounded-full mx-auto mb-4">
+                        <h3 class="font-bold">Sarah Chen</h3>
+                        <p class="text-gray-600">CEO & Founder</p>
+                    </div>
+                    <div class="card-hover">
+                        <img src="/api/placeholder/200/200" alt="CTO" class="rounded-full mx-auto mb-4">
+                        <h3 class="font-bold">Alex Rivera</h3>
+                        <p class="text-gray-600">CTO</p>
+                    </div>
+                    <div class="card-hover">
+                        <img src="/api/placeholder/200/200" alt="COO" class="rounded-full mx-auto mb-4">
+                        <h3 class="font-bold">Michael Park</h3>
+                        <p class="text-gray-600">COO</p>
+                    </div>
+                    <div class="card-hover">
+                        <img src="/api/placeholder/200/200" alt="CDO" class="rounded-full mx-auto mb-4">
+                        <h3 class="font-bold">Emma Watson</h3>
+                        <p class="text-gray-600">CDO</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <p>&copy; 2024 Phoenix32. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-blue-400">Privacy Policy</a>
+                    <a href="#" class="hover:text-blue-400">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Toggle navigation menu for mobile
+        const burger = document.getElementById('burger');
+        const navMenu = document.querySelector('nav');
+
+        burger.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
