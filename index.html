@@ -5,225 +5,439 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phoenix32 - Empowering Technology, Driving Innovation</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
         :root {
-            --primary: #0066ff;
-            --accent: #00ff66;
+            --primary: #2563eb;
+            --accent: #10b981;
+            --dark: #1e293b;
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
 
-        .nav-link {
-            position: relative;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: var(--accent);
-            transition: width 0.3s;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-gradient {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: radial-gradient(circle at top right, var(--accent), var(--primary));
+            position: relative;
+            overflow: hidden;
         }
 
-        .service-card {
-            transition: transform 0.3s, box-shadow 0.3s;
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='rgba(255,255,255,0.05)' fill-rule='evenodd'/%3E%3C/svg%3E");
+            animation: moveBackground 30s linear infinite;
         }
 
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.2);
+        @keyframes moveBackground {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-50%) rotate(10deg); }
         }
 
-        .stat-card {
-            background: linear-gradient(135deg, rgba(0,102,255,0.1), rgba(0,255,102,0.1));
+        .floating {
+            animation: float 6s ease-in-out infinite;
         }
 
-        .testimonial-card {
-            transition: transform 0.3s;
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
         }
 
-        .testimonial-card:hover {
-            transform: translateY(-5px);
+        .card-hover {
+            transition: all 0.3s ease;
         }
 
-        .news-card {
-            transition: transform 0.3s;
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
-        .news-card:hover {
-            transform: translateX(5px);
+        .nav-blur {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .marquee {
+            animation: marquee 20s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
         }
     </style>
 </head>
 <body class="bg-gray-50">
-    <header class="fixed w-full bg-white shadow-lg z-50">
-        <div class="container mx-auto px-4">
-            <div class="flex items-center justify-between py-4">
-                <img src="https://image.similarpng.com/very-thumbnail/2022/01/Luxury-gold-eagle-phoenix-logo-design-on-transparent-background-PNG.png" alt="Phoenix32 Logo" class="h-8">
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="nav-link text-gray-800 hover:text-blue-600">Home</a>
-                    <a href="about.html" class="nav-link text-gray-800 hover:text-blue-600">About Us</a>
-                    <a href="services.html" class="nav-link text-gray-800 hover:text-blue-600">Services</a>
-                    <a href="blog.html" class="nav-link text-gray-800 hover:text-blue-600">Blog</a>
-                    <a href="portfolio.html" class="nav-link text-gray-800 hover:text-blue-600">Portfolio</a>
-                    <a href="careers.html" class="nav-link text-gray-800 hover:text-blue-600">Careers</a>
-                    <a href="contact.html" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition">Contact</a>
-                </nav>
-                <button class="md:hidden">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
-                    </svg>
-                </button>
+    <header class="fixed w-full z-50 transition-all duration-300">
+        <div class="nav-blur bg-white/80 shadow-lg">
+            <div class="container mx-auto px-4">
+                <div class="flex items-center justify-between py-4">
+                    <div class="flex items-center space-x-2">
+                        <img src="/api/placeholder/40/40" alt="Phoenix32 Logo" class="h-10">
+                        <span class="font-bold text-xl gradient-text">Phoenix32</span>
+                    </div>
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a href="#home" class="text-gray-700 hover:text-blue-600 transition">Home</a>
+                        <a href="/Phoenix-32/services.html" class="text-gray-700 hover:text-blue-600 transition">Services</a>
+                        <a href="/Phoenix-32/about.html" class="text-gray-700 hover:text-blue-600 transition">About</a>
+                        <a href="/Phoenix-32/contact.html" class="bg-gradient-to-r from-blue-600 to-emerald-500 text-white px-6 py-2 rounded-full hover:opacity-90 transition">Contact Us</a>
+                    </nav>
+                    <button class="md:hidden text-gray-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
     <main>
-        <section class="hero-gradient min-h-screen flex items-center pt-16">
-            <div class="container mx-auto px-4">
+        <section id="home" class="hero-gradient min-h-screen flex items-center pt-20">
+            <div class="container mx-auto px-4 relative z-10">
                 <div class="flex flex-col md:flex-row items-center">
                     <div class="md:w-1/2 text-white">
-                        <h1 class="text-4xl md:text-6xl font-bold mb-6">Empowering Technology, Driving Innovation</h1>
-                        <p class="text-xl mb-8 opacity-90">Transform your business with cutting-edge IT solutions and expert consulting services.</p>
-                        <div class="flex space-x-4">
-                            <a href="#" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">Get Started</a>
-                            <a href="#" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition">Learn More</a>
+                        <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                            Transform Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-emerald-300">Digital Future</span>
+                        </h1>
+                        <p class="text-xl mb-8 text-gray-100">Unlock innovation with our cutting-edge tech solutions. We transform ideas into digital reality.</p>
+                        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                            <a href="#contact" class="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition text-center">Get Started</a>
+                            <a href="#services" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition text-center">Explore Services</a>
                         </div>
                     </div>
-                    <div class="md:w-1/2 mt-12 md:mt-0">
-                        <img src="/api/placeholder/600/400" alt="Innovation" class="rounded-lg shadow-2xl">
+                    <div class="md:w-1/2 mt-12 md:mt-0 floating">
+                        <img src="/api/placeholder/600/500" alt="Innovation" class="rounded-2xl shadow-2xl transform -rotate-6">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-16 bg-gray-100">
+        <section class="py-20 bg-white">
             <div class="container mx-auto px-4">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    <div class="stat-card p-6 rounded-lg text-center">
-                        <h3 class="text-4xl font-bold text-blue-600 mb-2">500+</h3>
-                        <p class="text-gray-600">Projects Completed</p>
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4">Trusted by Industry Leaders</h2>
+                    <div class="relative overflow-hidden h-20">
+                        <div class="flex space-x-12 marquee items-center absolute">
+                            <img src="/api/placeholder/120/40" alt="Client 1" class="h-8 grayscale hover:grayscale-0 transition">
+                            <img src="/api/placeholder/120/40" alt="Client 2" class="h-8 grayscale hover:grayscale-0 transition">
+                            <img src="/api/placeholder/120/40" alt="Client 3" class="h-8 grayscale hover:grayscale-0 transition">
+                            <img src="/api/placeholder/120/40" alt="Client 4" class="h-8 grayscale hover:grayscale-0 transition">
+                            <img src="/api/placeholder/120/40" alt="Client 5" class="h-8 grayscale hover:grayscale-0 transition">
+                        </div>
                     </div>
-                    <div class="stat-card p-6 rounded-lg text-center">
-                        <h3 class="text-4xl font-bold text-blue-600 mb-2">98%</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="card-hover bg-white p-8 rounded-2xl shadow-lg">
+                        <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Cloud Solutions</h3>
+                        <p class="text-gray-600">Scale your business with our enterprise-grade cloud infrastructure and services.</p>
+                    </div>
+                    
+                    <div class="card-hover bg-white p-8 rounded-2xl shadow-lg">
+                        <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">AI & Machine Learning</h3>
+                        <p class="text-gray-600">Leverage the power of AI to automate processes and gain valuable insights.</p>
+                    </div>
+                    
+                    <div class="card-hover bg-white p-8 rounded-2xl shadow-lg">
+                        <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Cybersecurity</h3>
+                        <p class="text-gray-600">Protect your digital assets with our advanced security solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4">Why Choose Phoenix32?</h2>
+                    <p class="text-xl text-gray-600">We combine technical expertise with business acumen to deliver solutions that drive real results.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center card-hover">
+                        <div class="text-4xl font-bold text-blue-600 mb-2">
+                            <span class="counter">500</span>+
+                        </div>
+                        <p class="text-gray-600">Projects Delivered</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center card-hover">
+                        <div class="text-4xl font-bold text-blue-600 mb-2">
+                            <span class="counter">98</span>%
+                        </div>
                         <p class="text-gray-600">Client Satisfaction</p>
                     </div>
-                    <div class="stat-card p-6 rounded-lg text-center">
-                        <h3 class="text-4xl font-bold text-blue-600 mb-2">50+</h3>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center card-hover">
+                        <div class="text-4xl font-bold text-blue-600 mb-2">
+                            <span class="counter">50</span>+
+                        </div>
                         <p class="text-gray-600">Tech Experts</p>
                     </div>
-                    <div class="stat-card p-6 rounded-lg text-center">
-                        <h3 class="text-4xl font-bold text-blue-600 mb-2">24/7</h3>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center card-hover">
+                        <div class="text-4xl font-bold text-blue-600 mb-2">24/7</div>
                         <p class="text-gray-600">Support Available</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-16">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12">What Our Clients Say</h2>
+        <section class="py-20 bg-white relative overflow-hidden">
+            <div class="absolute inset-0 opacity-5">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-emerald-500"></div>
+            </div>
+            <div class="container mx-auto px-4 relative">
+                <h2 class="text-4xl font-bold text-center mb-16">What Our Clients Say</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="testimonial-card bg-white p-6 rounded-lg shadow-lg">
-                        <div class="flex items-center mb-4">
-                            <img src="/api/placeholder/40/40" alt="Client" class="rounded-full">
+                    <div class="bg-white p-8 rounded-2xl shadow-xl card-hover">
+                        <div class="flex items-center mb-6">
+                            <img src="/api/placeholder/48/48" alt="Client" class="w-12 h-12 rounded-full">
                             <div class="ml-4">
-                                <h4 class="font-semibold">Sarah Johnson</h4>
+                                <h4 class="font-bold">Sarah Johnson</h4>
                                 <p class="text-gray-600">CEO, TechCorp</p>
                             </div>
                         </div>
-                        <p class="text-gray-700">"Phoenix32 transformed our IT infrastructure. Their cloud solutions have significantly improved our efficiency."</p>
+                        <p class="text-gray-700 leading-relaxed">"Phoenix32's cloud solutions transformed our infrastructure, improving efficiency by 200%. Their team's expertise is unmatched."</p>
+                        <div class="mt-6 flex text-yellow-400">
+                            ★★★★★
+                        </div>
                     </div>
-                    <div class="testimonial-card bg-white p-6 rounded-lg shadow-lg">
-                        <div class="flex items-center mb-4">
-                            <img src="/api/placeholder/40/40" alt="Client" class="rounded-full">
+                    
+                    <div class="bg-white p-8 rounded-2xl shadow-xl card-hover">
+                        <div class="flex items-center mb-6">
+                            <img src="/api/placeholder/48/48" alt="Client" class="w-12 h-12 rounded-full">
                             <div class="ml-4">
-                                <h4 class="font-semibold">John Doe</h4>
+                                <h4 class="font-bold">Michael Chen</h4>
                                 <p class="text-gray-600">CTO, InnovateX</p>
                             </div>
                         </div>
-                        <p class="text-gray-700">"The team at Phoenix32 is exceptional. Their expertise in automation has streamlined our processes."</p>
+                        <p class="text-gray-700 leading-relaxed">"The AI solutions provided by Phoenix32 helped us automate 75% of our manual processes. Game-changing results!"</p>
+                        <div class="mt-6 flex text-yellow-400">
+                            ★★★★★
+                        </div>
                     </div>
-                    <div class="testimonial-card bg-white p-6 rounded-lg shadow-lg">
-                        <div class="flex items-center mb-4">
-                            <img src="/api/placeholder/40/40" alt="Client" class="rounded-full">
+                    
+                    <div class="bg-white p-8 rounded-2xl shadow-xl card-hover">
+                        <div class="flex items-center mb-6">
+                            <img src="/api/placeholder/48/48" alt="Client" class="w-12 h-12 rounded-full">
                             <div class="ml-4">
-                                <h4 class="font-semibold">Emily Smith</h4>
-                                <p class="text-gray-600">Manager, Creative Agency</p>
+                                <h4 class="font-bold">Emily Rodriguez</h4>
+                                <p class="text-gray-600">COO, FutureScale</p>
                             </div>
                         </div>
-                        <p class="text-gray-700">"Working with Phoenix32 has been a game-changer for our business. Highly recommend!"</p>
+                        <p class="text-gray-700 leading-relaxed">"Their cybersecurity team prevented a major breach and implemented robust protection. We feel safe with Phoenix32."</p>
+                        <div class="mt-6 flex text-yellow-400">
+                            ★★★★★
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-16 bg-gray-100">
+        <section class="py-20 bg-gray-50">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12">Latest Tech Insights</h2>
+                <h2 class="text-4xl font-bold text-center mb-16">Latest Insights</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="news-card bg-white rounded-lg overflow-hidden shadow-lg">
-                        <img src="/api/placeholder/400/200" alt="News" class="w-full">
+                    <article class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+                        <img src="/api/placeholder/400/250" alt="AI Trends" class="w-full h-48 object-cover">
                         <div class="p-6">
-                            <h3 class="font-semibold text-xl mb-2">Cloud Computing Trends 2024</h3>
-                            <p class="text-gray-600 mb-4">Exploring the latest developments in cloud technology...</p>
-                            <a href="#" class="text-blue-600 font-semibold hover:text-blue-700">Read More →</a>
+                            <span class="text-sm text-blue-600 font-semibold">Artificial Intelligence</span>
+                            <h3 class="text-xl font-bold mt-2 mb-3">The Future of AI in Enterprise</h3>
+                            <p class="text-gray-600 mb-4">Discover how AI is revolutionizing business operations and decision-making processes...</p>
+                            <a href="#" class="inline-flex items-center text-blue-600 font-semibold">
+                                Read More
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
                         </div>
-                    </div>
-                    <div class="news-card bg-white rounded-lg overflow-hidden shadow-lg">
-                        <img src="/api/placeholder/400/200" alt="News" class="w-full">
+                    </article>
+
+                    <article class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+                        <img src="/api/placeholder/400/250" alt="Cloud Computing" class="w-full h-48 object-cover">
                         <div class="p-6">
-                            <h3 class="font-semibold text-xl mb-2">AI in Business: The Future</h3>
-                            <p class="text-gray-600 mb-4">How artificial intelligence is shaping the business landscape...</p>
-                            <a href="#" class="text-blue-600 font-semibold hover:text-blue-700">Read More →</a>
+                            <span class="text-sm text-blue-600 font-semibold">Cloud Computing</span>
+                            <h3 class="text-xl font-bold mt-2 mb-3">Scaling in the Cloud Era</h3>
+                            <p class="text-gray-600 mb-4">Learn how modern businesses are leveraging cloud infrastructure for explosive growth...</p>
+                            <a href="#" class="inline-flex items-center text-blue-600 font-semibold">
+                                Read More
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
                         </div>
-                    </div>
-                    <div class="news-card bg-white rounded-lg overflow-hidden shadow-lg">
-                        <img src="/api/placeholder/400/200" alt="News" class="w-full">
+                    </article>
+
+                    <article class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+                        <img src="/api/placeholder/400/250" alt="Cybersecurity" class="w-full h-48 object-cover">
                         <div class="p-6">
-                            <h3 class="font-semibold text-xl mb-2">Cybersecurity Best Practices</h3>
-                            <p class="text-gray-600 mb-4">Essential tips to protect your business from cyber threats...</p>
-                            <a href="#" class="text-blue-600 font-semibold hover:text-blue-700">Read More →</a>
+                            <span class="text-sm text-blue-600 font-semibold">Cybersecurity</span>
+                            <h3 class="text-xl font-bold mt-2 mb-3">2024 Security Trends</h3>
+                            <p class="text-gray-600 mb-4">Stay ahead of cyber threats with our comprehensive analysis of emerging security trends...</p>
+                            <a href="#" class="inline-flex items-center text-blue-600 font-semibold">
+                                Read More
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section class="py-16 hero-gradient">
-            <div class="container mx-auto px-4 text-center text-white">
-                <h2 class="text-3xl font-bold mb-6">Ready to Transform Your Business?</h2>
-                <p class="text-xl mb-8">Let's discuss how we can help you achieve your technology goals.</p>
-                <a href="#" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">Schedule a Consultation</a>
+        <section class="py-20 hero-gradient relative overflow-hidden">
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="max-w-4xl mx-auto text-center text-white">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Transform Your Business?</h2>
+                    <p class="text-xl mb-8">Let's discuss how we can help you achieve your technology goals.</p>
+                    <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#" class="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition text-center">Schedule a Consultation</a>
+                        <a href="#" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition text-center">View Case Studies</a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-gray-900 text-white py-8">
+    <footer class="bg-gray-900 text-white py-16">
         <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center">
-                <p>&copy; 2024 Phoenix32. All rights reserved.</p>
-                <div class="flex space-x-6">
-                    <a href="#" class="hover:text-blue-400">Privacy Policy</a>
-                    <a href="#" class="hover:text-blue-400">Terms of Service</a>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <img src="/api/placeholder/40/40" alt="Phoenix32 Logo" class="h-8">
+                        <span class="font-bold text-xl">Phoenix32</span>
+                    </div>
+                    <p class="text-gray-400">Empowering businesses with cutting-edge technology solutions.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Cloud Solutions</a></li>
+                        <li><a href="#" class="hover:text-white transition">AI & Machine Learning</a></li>
+                        <li><a href="#" class="hover:text-white transition">Cybersecurity</a></li>
+                        <li><a href="#" class="hover:text-white transition">Digital Transformation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition">Careers</a></li>
+                        <li><a href="/Phoenix-32/blog.html" class="hover:text-white transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Connect</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">LinkedIn</a></li>
+                        <li><a href="#" class="hover:text-white transition">Twitter</a></li>
+                        <li><a href="#" class="hover:text-white transition">GitHub</a></li>
+                        <li><a href="#" class="hover:text-white transition">Medium</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400">&copy; 2024 Phoenix32. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a>
                 </div>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Initialize GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animate stats on scroll
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            let start = {val: 0};
+            let end = parseInt(counter.textContent);
+
+            gsap.to(start, {
+                val: end,
+                duration: 2,
+                scrollTrigger: {
+                    trigger: counter,
+                    start: "top 80%",
+                },
+                onUpdate: () => {
+                    counter.textContent = Math.round(start.val);
+                }
+            });
+        });
+
+        // Animate cards on scroll
+        gsap.utils.toArray('.card-hover').forEach(card => {
+            gsap.from(card, {
+                y: 60,
+                opacity: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 80%",
+                }
+            });
+        });
+
+        // Header scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuButton = document.querySelector('button.md\\:hidden');
+        const mobileNav = document.querySelector('nav');
+        
+        menuButton.addEventListener('click', () => {
+            mobileNav.classList.toggle('hidden');
+            mobileNav.classList.toggle('flex');
+            mobileNav.classList.toggle('flex-col');
+            mobileNav.classList.toggle('absolute');
+            mobileNav.classList.toggle('top-full');
+            mobileNav.classList.toggle('left-0');
+            mobileNav.classList.toggle('right-0');
+            mobileNav.classList.toggle('bg-white');
+            mobileNav.classList.toggle('shadow-lg');
+            mobileNav.classList.toggle('p-4');
+        });
+    </script>
 </body>
 </html>

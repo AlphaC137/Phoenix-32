@@ -1,173 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Phoenix32</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog - Phoenix32</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-        :root {
-            --primary: #0066ff;
-            --accent: #00ff66;
-        }
+:root {
+--primary: #2563eb;
+--accent: #10b981;
+--dark: #1e293b;
+}
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-        }
+body {
+font-family: 'Inter', sans-serif;
+scroll-behavior: smooth;
+}
 
-        .blog-card {
-            transition: transform 0.3s ease;
-        }
+.gradient-text {
+background: linear-gradient(135deg, var(--primary), var(--accent));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
 
-        .blog-card:hover {
-            transform: translateY(-5px);
-        }
+.hero-gradient {
+background: radial-gradient(circle at top right, var(--accent), var(--primary));
+position: relative;
+overflow: hidden;
+}
 
-        .category-pill {
-            transition: all 0.3s ease;
-        }
+.hero-gradient::before {
+content: '';
+position: absolute;
+width: 200%;
+height: 200%;
+background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='rgba(255,255,255,0.05)' fill-rule='evenodd'/%3E%3C/svg%3E");
+animation: moveBackground 30s linear infinite;
+}
 
-        .category-pill:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-    </style>
+.card-hover {
+transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+transform: translateY(-10px);
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.nav-blur {
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+}
+
+@keyframes moveBackground {
+0% { transform: translateY(0) rotate(0deg); }
+100% { transform: translateY(-50%) rotate(10deg); }
+}
+</style>
 </head>
 <body class="bg-gray-50">
-    <header class="fixed w-full bg-white shadow-lg z-50">
-        <div class="container mx-auto px-4">
-            <div class="flex items-center justify-between py-4">
-                <img src="/api/placeholder/120/40" alt="Phoenix32 Logo" class="h-8">
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="nav-link text-gray-800 hover:text-blue-600">Home</a>
-                    <a href="about.html" class="nav-link text-gray-800 hover:text-blue-600">About Us</a>
-                    <a href="services.html" class="nav-link text-gray-800 hover:text-blue-600">Services</a>
-                    <a href="blog.html" class="nav-link text-gray-800 hover:text-blue-600">Blog</a>
-                    <a href="portfolio.html" class="nav-link text-gray-800 hover:text-blue-600">Portfolio</a>
-                    <a href="careers.html" class="nav-link text-gray-800 hover:text-blue-600">Careers</a>
-                    <a href="products.html" class="nav-link text-gray-800 hover:text-blue-600">Products</a>
-                    <a href="contact.html" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition">Contact</a>
-                </nav>
-                <button class="md:hidden">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </header>
+<header class="fixed w-full z-50 transition-all duration-300">
+<div class="nav-blur bg-white/80 shadow-lg">
+<div class="container mx-auto px-4">
+<div class="flex items-center justify-between py-4">
+<div class="flex items-center space-x-2">
+<img src="/api/placeholder/40/40" alt="Phoenix32 Logo" class="h-10">
+<span class="font-bold text-xl gradient-text">Phoenix32</span>
+</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a href="/Phoenix-32/index.html" class="text-gray-700 hover:text-blue-600 transition">Home</a>
+<a href="/Phoenix-32/services.html" class="text-gray-700 hover:text-blue-600 transition">Services</a>
+<a href="/Phoenix-32/about.html" class="text-gray-700 hover:text-blue-600 transition">About</a>
+<a href="#" class="bg-gradient-to-r from-blue-600 to-emerald-500 text-white px-6 py-2 rounded-full hover:opacity-90 transition">Contact Us</a>
+</nav>
+<button class="md:hidden text-gray-600">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
+</svg>
+</button>
+</div>
+</div>
+</div>
+</header>
 
-    <main class="pt-16">
-        <section class="container mx-auto px-4 py-20">
-            <div class="text-center mb-12" data-aos="fade-up">
-                <h1 class="text-5xl font-bold mb-6">Tech Insights & Updates</h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Explore the latest in technology, industry trends, and company updates from our expert team.</p>
-            </div>
+<main>
+<section class="hero-gradient py-32 relative">
+<div class="container mx-auto px-4 relative z-10">
+<div class="max-w-4xl mx-auto text-center text-white">
+<h1 class="text-5xl md:text-7xl font-bold mb-6">Tech Insights & Innovation</h1>
+<p class="text-xl mb-8 text-gray-100">Stay ahead with the latest insights in technology, AI, cloud computing, and cybersecurity.</p>
+<div class="flex flex-wrap justify-center gap-4">
+<button class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition">All Topics</button>
+<button class="border-2 border-white text-white px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition">AI & ML</button>
+<button class="border-2 border-white text-white px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition">Cloud</button>
+<button class="border-2 border-white text-white px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition">Security</button>
+</div>
+</div>
+</div>
+</section>
 
-            <div class="mb-12" data-aos="fade-up">
-                <div class="flex flex-wrap gap-4 justify-center">
-                    <button class="category-pill px-6 py-2 rounded-full bg-blue-100 text-blue-600 font-medium">All</button>
-                    <button class="category-pill px-6 py-2 rounded-full bg-gray-100 text-gray-600 font-medium">AI & ML</button>
-                    <button class="category-pill px-6 py-2 rounded-full bg-gray-100 text-gray-600 font-medium">Cloud Computing</button>
-                    <button class="category-pill px-6 py-2 rounded-full bg-gray-100 text-gray-600 font-medium">Cybersecurity</button>
-                    <button class="category-pill px-6 py-2 rounded-full bg-gray-100 text-gray-600 font-medium">DevOps</button>
-                    <button class="category-pill px-6 py-2 rounded-full bg-gray-100 text-gray-600 font-medium">Company News</button>
-                </div>
-            </div>
+<section class="py-20 bg-white">
+<div class="container mx-auto px-4">
+<h2 class="text-4xl font-bold text-center mb-16">Featured Articles</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<article class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+<img src="/api/placeholder/400/250" alt="AI Trends" class="w-full h-48 object-cover">
+<div class="p-6">
+<div class="flex gap-2 mb-4">
+<span class="text-sm bg-blue-100 text-blue-600 px-3 py-1 rounded-full">AI & ML</span>
+<span class="text-sm text-gray-500">5 min read</span>
+</div>
+<h3 class="text-xl font-bold mb-3">The Future of AI in Enterprise</h3>
+<p class="text-gray-600 mb-4">Discover how AI is revolutionizing business operations and decision-making processes...</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<img src="/api/placeholder/32/32" alt="Author" class="w-8 h-8 rounded-full">
+<span class="ml-2 text-sm text-gray-600">Dr. Sarah Chen</span>
+</div>
+<span class="text-sm text-gray-500">Jan 2, 2024</span>
+</div>
+</div>
+</article>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                <article class="blog-card bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up">
-                    <img src="/api/placeholder/400/250" alt="Blog Post" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex gap-2 mb-4">
-                            <span class="text-sm bg-blue-100 text-blue-600 px-3 py-1 rounded-full">AI & ML</span>
-                            <span class="text-sm text-gray-500">5 min read</span>
-                        </div>
-                        <h2 class="text-xl font-bold mb-3">The Future of AI in Enterprise Solutions</h2>
-                        <p class="text-gray-600 mb-4">Exploring how artificial intelligence is reshaping business operations and decision-making processes...</p>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <img src="/api/placeholder/40/40" alt="Author" class="w-8 h-8 rounded-full mr-2">
-                                <span class="text-sm text-gray-600">Dr. Sarah Chen</span>
-                            </div>
-                            <span class="text-sm text-gray-500">Jan 2, 2024</span>
-                        </div>
-                    </div>
-                </article>
+<article class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+<img src="/api/placeholder/400/250" alt="Cloud Computing" class="w-full h-48 object-cover">
+<div class="p-6">
+<div class="flex gap-2 mb-4">
+<span class="text-sm bg-emerald-100 text-emerald-600 px-3 py-1 rounded-full">Cloud</span>
+<span class="text-sm text-gray-500">8 min read</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Scaling in the Cloud Era</h3>
+<p class="text-gray-600 mb-4">Learn how modern businesses are leveraging cloud infrastructure for explosive growth...</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<img src="/api/placeholder/32/32" alt="Author" class="w-8 h-8 rounded-full">
+<span class="ml-2 text-sm text-gray-600">Alex Rivera</span>
+</div>
+<span class="text-sm text-gray-500">Dec 28, 2023</span>
+</div>
+</div>
+</article>
 
-                <article class="blog-card bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-                    <img src="/api/placeholder/400/250" alt="Blog Post" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex gap-2 mb-4">
-                            <span class="text-sm bg-blue-100 text-blue-600 px-3 py-1 rounded-full">Cloud Computing</span>
-                            <span class="text-sm text-gray-500">8 min read</span>
-                        </div>
-                        <h2 class="text-xl font-bold mb-3">Optimizing Cloud Infrastructure for Scale</h2>
-                        <p class="text-gray-600 mb-4">Best practices and strategies for building scalable cloud architectures...</p>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <img src="/api/placeholder/40/40" alt="Author" class="w-8 h-8 rounded-full mr-2">
-                                <span class="text-sm text-gray-600">Alex Rivera</span>
-                            </div>
-                            <span class="text-sm text-gray-500">Dec 28, 2023</span>
-                        </div>
-                    </div>
-                </article>
+<article class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+<img src="/api/placeholder/400/250" alt="Cybersecurity" class="w-full h-48 object-cover">
+<div class="p-6">
+<div class="flex gap-2 mb-4">
+<span class="text-sm bg-purple-100 text-purple-600 px-3 py-1 rounded-full">Security</span>
+<span class="text-sm text-gray-500">6 min read</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Zero Trust Security</h3>
+<p class="text-gray-600 mb-4">Understanding the principles and implementation of zero trust architecture...</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<img src="/api/placeholder/32/32" alt="Author" class="w-8 h-8 rounded-full">
+<span class="ml-2 text-sm text-gray-600">Emma Watson</span>
+</div>
+<span class="text-sm text-gray-500">Dec 25, 2023</span>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
 
-                <article class="blog-card bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
-                    <img src="/api/placeholder/400/250" alt="Blog Post" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex gap-2 mb-4">
-                            <span class="text-sm bg-blue-100 text-blue-600 px-3 py-1 rounded-full">Cybersecurity</span>
-                            <span class="text-sm text-gray-500">6 min read</span>
-                        </div>
-                        <h2 class="text-xl font-bold mb-3">Zero Trust Security: A Modern Approach</h2>
-                        <p class="text-gray-600 mb-4">Understanding the principles and implementation of zero trust architecture...</p>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <img src="/api/placeholder/40/40" alt="Author" class="w-8 h-8 rounded-full mr-2">
-                                <span class="text-sm text-gray-600">Emma Watson</span>
-                            </div>
-                            <span class="text-sm text-gray-500">Dec 25, 2023</span>
-                        </div>
-                    </div>
-                </article>
-            </div>
+<section class="py-20 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-12 text-center">
+<h2 class="text-3xl font-bold mb-6">Stay Updated with Our Newsletter</h2>
+<p class="text-gray-600 mb-8">Get the latest insights and updates delivered straight to your inbox.</p>
+<div class="flex max-w-md mx-auto">
+<input type="email" placeholder="Enter your email" class="flex-1 px-6 py-3 rounded-l-full border-2 border-gray-200 focus:outline-none focus:border-blue-600">
+<button class="bg-gradient-to-r from-blue-600 to-emerald-500 text-white px-8 py-3 rounded-r-full hover:opacity-90 transition">Subscribe</button>
+</div>
+</div>
+</div>
+</section>
+</main>
 
-            <div class="flex justify-center" data-aos="fade-up">
-                <button class="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition">Load More Articles</button>
-            </div>
+<footer class="bg-gray-900 text-white py-16">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+<div>
+<div class="flex items-center space-x-2 mb-6">
+<img src="/api/placeholder/40/40" alt="Phoenix32 Logo" class="h-8">
+<span class="font-bold text-xl">Phoenix32</span>
+</div>
+<p class="
+<p class="text-gray-400">Empowering businesses with cutting-edge technology solutions.</p>
+</div>
+<div>
+<h4 class="font-bold text-lg mb-4">Services</h4>
+<ul class="space-y-2 text-gray-400">
+<li><a href="#" class="hover:text-white transition">Cloud Solutions</a></li>
+<li><a href="#" class="hover:text-white transition">AI & Machine Learning</a></li>
+<li><a href="#" class="hover:text-white transition">Cybersecurity</a></li>
+<li><a href="#" class="hover:text-white transition">Digital Transformation</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-lg mb-4">Company</h4>
+<ul class="space-y-2 text-gray-400">
+<li><a href="#" class="hover:text-white transition">About Us</a></li>
+<li><a href="#" class="hover:text-white transition">Careers</a></li>
+<li><a href="/Phoenix-32/blog.html" class="hover:text-white transition">Blog</a></li>
+<li><a href="#" class="hover:text-white transition">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-lg mb-4">Connect</h4>
+<ul class="space-y-2 text-gray-400">
+<li><a href="#" class="hover:text-white transition">LinkedIn</a></li>
+<li><a href="#" class="hover:text-white transition">Twitter</a></li>
+<li><a href="#" class="hover:text-white transition">GitHub</a></li>
+<li><a href="#" class="hover:text-white transition">Medium</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400">&copy; 2024 Phoenix32. All rights reserved.</p>
+<div class="flex space-x-6 mt-4 md:mt-0">
+<a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
+<a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a>
+</div>
+</div>
+</div>
+</footer>
 
-            <div class="mt-16 bg-blue-50 rounded-xl p-8 text-center" data-aos="fade-up">
-                <h2 class="text-2xl font-bold mb-4">Stay Updated</h2>
-                <p class="text-gray-600 mb-6">Subscribe to our newsletter for the latest tech insights and company updates.</p>
-                <form class="flex max-w-md mx-auto">
-                    <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-2 rounded-l-full border-2 border-r-0 border-blue-200 focus:outline-none focus:border-blue-600">
-                    <button class="px-6 py-2 bg-blue-600 text-white rounded-r-full hover:bg-blue-700 transition">Subscribe</button>
-                </form>
-            </div>
-        </section>
-    </main>
+<script>
+// Initialize GSAP
+gsap.registerPlugin(ScrollTrigger);
 
-    <footer class="bg-gray-900 text-white py-8">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center">
-                <p>&copy; 2024 Phoenix32. All rights reserved.</p>
-                <div class="flex space-x-6">
-                    <a href="#" class="hover:text-blue-400">Privacy Policy</a>
-                    <a href="#" class="hover:text-blue-400">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+// Animate cards on scroll
+gsap.utils.toArray('.card-hover').forEach(card => {
+gsap.from(card, {
+y: 60,
+opacity: 0,
+duration: 1,
+scrollTrigger: {
+trigger: card,
+start: "top 80%",
+}
+});
+});
 
-    <script>
-        AOS.init({
-            duration: 800,
-            once: true
-        });
-    </script>
+// Header scroll effect
+const header = document.querySelector('header');
+window.addEventListener('scroll', () => {
+if (window.scrollY > 100) {
+header.classList.add('shadow-lg');
+} else {
+header.classList.remove('shadow-lg');
+}
+});
+
+// Mobile menu toggle
+const menuButton = document.querySelector('button.md\\:hidden');
+const mobileNav = document.querySelector('nav');
+
+menuButton.addEventListener('click', () => {
+mobileNav.classList.toggle('hidden');
+mobileNav.classList.toggle('flex');
+mobileNav.classList.toggle('flex-col');
+mobileNav.classList.toggle('absolute');
+mobileNav.classList.toggle('top-full');
+mobileNav.classList.toggle('left-0');
+mobileNav.classList.toggle('right-0');
+mobileNav.classList.toggle('bg-white');
+mobileNav.classList.toggle('shadow-lg');
+mobileNav.classList.toggle('p-4');
+});
+</script>
 </body>
 </html>
