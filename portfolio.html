@@ -7,7 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;900&family=Roboto:wght@300;400;500&display=swap');
 
         :root {
             --primary: #0066ff;
@@ -15,164 +15,287 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
+            font-family: 'Roboto', sans-serif;
+            background: repeating-linear-gradient(
+                45deg,
+                #f8f9fa,
+                #f8f9fa 10px,
+                #ffffff 10px,
+                #ffffff 20px
+            );
+        }
+
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
         }
 
         .project-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
         }
 
         .project-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: scale(1.02) rotate(-1deg);
+            box-shadow: 
+                -5px -5px 0 var(--primary),
+                5px 5px 0 var(--accent);
         }
 
         .photo-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(2, 200px);
             gap: 1rem;
-            perspective: 1000px;
         }
 
         .photo-grid-item {
+            position: relative;
             overflow: hidden;
-            border-radius: 0.75rem;
-            transition: all 0.5s ease;
+        }
+
+        .photo-grid-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .photo-grid-item:nth-child(2) {
+            grid-column: span 2;
         }
 
         .photo-grid-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transform: scale(1);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
             transition: transform 0.5s ease;
         }
 
-        .photo-grid-item:hover img {
-            transform: scale(1.1) rotate(3deg);
+        .photo-grid-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
         }
 
-        .animated-background {
+        .photo-grid-item:hover::before {
+            opacity: 0.3;
+        }
+
+        .photo-grid-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-link::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.3s ease;
             z-index: -1;
-            background: linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
         }
 
-        @keyframes gradientBG {
-            0% {background-position: 0% 50%;}
-            50% {background-position: 100% 50%;}
-            100% {background-position: 0% 50%;}
+        .nav-link:hover::before {
+            opacity: 0.1;
+        }
+
+        .tech-icon-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+        }
+
+        .tech-stack-icon {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .tech-stack-icon::after {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            border: 2px solid transparent;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .tech-stack-icon:hover {
+            transform: translateY(-10px);
+        }
+
+        .tech-stack-icon:hover::after {
+            border-color: var(--accent);
+        }
+
+        .glitch-effect {
+            position: relative;
+        }
+
+        .glitch-effect::before,
+        .glitch-effect::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            clip: rect(0, 900px, 0, 0);
+        }
+
+        .glitch-effect::before {
+            text-shadow: -2px 0 var(--primary);
+            animation: glitch-anim 2s infinite linear alternate-reverse;
+        }
+
+        .glitch-effect::after {
+            text-shadow: 2px 0 var(--accent);
+            animation: glitch-anim 3s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% {
+                clip: rect(44px, 9999px, 56px, 0);
+            }
+            20% {
+                clip: rect(12px, 9999px, 65px, 0);
+            }
+            40% {
+                clip: rect(78px, 9999px, 92px, 0);
+            }
+            60% {
+                clip: rect(33px, 9999px, 47px, 0);
+            }
+            80% {
+                clip: rect(15px, 9999px, 88px, 0);
+            }
+            100% {
+                clip: rect(67px, 9999px, 71px, 0);
+            }
         }
     </style>
 </head>
-<body class="relative bg-gray-50">
-    <div class="animated-background"></div>
-
-    <header class="fixed w-full bg-white shadow-lg z-50">
-        <div class="container mx-auto px-4">
-            <div class="flex items-center justify-between py-4">
-                <img src="https://image.similarpng.com/very-thumbnail/2022/01/Luxury-gold-eagle-phoenix-logo-design-on-transparent-background-PNG.png" alt="Phoenix32 Logo" class="h-8">
+<body>
+    <header class="fixed w-full backdrop-blur-md z-50 border-b-4 border-primary">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between py-6">
+                <img src="https://image.similarpng.com/very-thumbnail/2022/01/Luxury-gold-eagle-phoenix-logo-design-on-transparent-background-PNG.png" alt="Phoenix32 Logo" class="h-12">
                 <nav class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="nav-link text-gray-800 hover:text-blue-600">Home</a>
-                    <a href="about.html" class="nav-link text-gray-800 hover:text-blue-600">About Us</a>
-                    <a href="services.html" class="nav-link text-gray-800 hover:text-blue-600">Services</a>
-                    <a href="blog.html" class="nav-link text-gray-800 hover:text-blue-600">Blog</a>
-                    <a href="portfolio.html" class="nav-link text-gray-800 hover:text-blue-600">Portfolio</a>
-                    <a href="careers.html" class="nav-link text-gray-800 hover:text-blue-600">Careers</a>
-                    <a href="products.html" class="nav-link text-gray-800 hover:text-blue-600">Products</a>
-                    <a href="contact.html" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition">Contact</a>
-                </nav>
-                <button class="md:hidden">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
-                    </svg>
-                </button>
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a href="index.html" class="nav-link text-gray-800 hover:text-blue-600">Home</a>
+                        <a href="about.html" class="nav-link text-gray-800 hover:text-blue-600">About Us</a>
+                        <a href="services.html" class="nav-link text-gray-800 hover:text-blue-600">Services</a>
+                        <a href="blog.html" class="nav-link text-gray-800 hover:text-blue-600">Blog</a>
+                        <a href="portfolio.html" class="nav-link text-gray-800 hover:text-blue-600">Portfolio</a>
+                        <a href="careers.html" class="nav-link text-gray-800 hover:text-blue-600">Careers</a>
+                        <a href="products.html" class="nav-link text-gray-800 hover:text-blue-600">Products</a>
+                        <a href="contact.html" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition">Contact</a>
+                    </nav>
             </div>
         </div>
     </header>
 
-    <main class="pt-16 relative">
-        <section class="container mx-auto px-4 py-20">
-            <h1 class="text-5xl font-bold mb-6 text-white drop-shadow-lg">Our Digital Innovation Portfolio</h1>
-            
-            <!-- Animated Photo Grid -->
-            <div class="photo-grid mb-16">
-                <div class="photo-grid-item" data-aos="zoom-in">
+    <main class="pt-32 relative">
+        <section class="container mx-auto px-6 py-20">
+            <h1 class="text-7xl font-black mb-12 glitch-effect" data-text="INNOVATE">
+                INNO<span class="text-primary">VATE</span>
+                <span class="text-xs tracking-widest block mt-4 text-accent">PHOENIX32 TECH SOLUTIONS</span>
+            </h1>
+
+            <div class="photo-grid mb-24">
+                <div class="photo-grid-item">
                     <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1" alt="Tech Team">
                 </div>
-                <div class="photo-grid-item" data-aos="zoom-in">
+                <div class="photo-grid-item">
                     <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e" alt="Innovation Lab">
                 </div>
-                <div class="photo-grid-item" data-aos="zoom-in">
+                <div class="photo-grid-item">
                     <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f" alt="AI Research">
                 </div>
-                <div class="photo-grid-item" data-aos="zoom-in">
+                <div class="photo-grid-item">
                     <img src="https://images.unsplash.com/photo-1488590528505-98d2b5ade38b" alt="Cloud Computing">
                 </div>
-                <div class="photo-grid-item" data-aos="zoom-in">
+                <div class="photo-grid-item">
                     <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" alt="Data Center">
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Project Cards -->
-                <div class="bg-white rounded-lg shadow-lg p-6 project-card">
-                    <img src="https://via.placeholder.com/350x200" alt="AI Healthcare Platform" class="rounded-t-lg mb-4">
-                    <h3 class="text-2xl font-semibold mb-3">MediAI Connect</h3>
-                    <p class="text-gray-600 mb-4">An AI-powered healthcare management platform improving patient care through predictive analytics.</p>
-                    <div class="flex items-center">
-                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full mr-2">AI</span>
-                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full">Healthcare</span>
+            <div class="grid md:grid-cols-3 gap-12 mb-24">
+                <div class="project-card p-8">
+                    <div class="overflow-hidden mb-6">
+                        <img src="https://via.placeholder.com/350x200" alt="AI Healthcare Platform" class="w-full transition-transform duration-300 hover:scale-110">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">MediAI Connect</h3>
+                    <p class="text-gray-600 mb-6">An AI-powered healthcare management platform improving patient care through predictive analytics.</p>
+                    <div class="flex items-center space-x-4">
+                        <span class="px-4 py-2 border-2 border-primary text-primary">AI</span>
+                        <span class="px-4 py-2 border-2 border-accent text-accent">Healthcare</span>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-lg p-6 project-card">
-                    <img src="https://via.placeholder.com/350x200" alt="Blockchain Supply Chain" class="rounded-t-lg mb-4">
-                    <h3 class="text-2xl font-semibold mb-3">ChainTrack Pro</h3>
-                    <p class="text-gray-600 mb-4">Blockchain-enabled supply chain tracking system ensuring transparency and efficiency.</p>
-                    <div class="flex items-center">
-                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full mr-2">Blockchain</span>
-                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full">Logistics</span>
+                <div class="project-card p-8">
+                    <div class="overflow-hidden mb-6">
+                        <img src="https://via.placeholder.com/350x200" alt="AI Healthcare Platform" class="w-full transition-transform duration-300 hover:scale-110">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">MediAI Connect</h3>
+                    <p class="text-gray-600 mb-6">An AI-powered healthcare management platform improving patient care through predictive analytics.</p>
+                    <div class="flex items-center space-x-4">
+                        <span class="px-4 py-2 border-2 border-primary text-primary">AI</span>
+                        <span class="px-4 py-2 border-2 border-accent text-accent">Healthcare</span>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-lg p-6 project-card">
-                    <img src="https://via.placeholder.com/350x200" alt="IoT Smart City" class="rounded-t-lg mb-4">
-                    <h3 class="text-2xl font-semibold mb-3">UrbanPulse</h3>
-                    <p class="text-gray-600 mb-4">IoT-driven smart city infrastructure management and real-time urban analytics platform.</p>
-                    <div class="flex items-center">
-                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full mr-2">IoT</span>
-                        <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full">Smart City</span>
+                <div class="project-card p-8">
+                    <div class="overflow-hidden mb-6">
+                        <img src="https://via.placeholder.com/350x200" alt="AI Healthcare Platform" class="w-full transition-transform duration-300 hover:scale-110">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">MediAI Connect</h3>
+                    <p class="text-gray-600 mb-6">An AI-powered healthcare management platform improving patient care through predictive analytics.</p>
+                    <div class="flex items-center space-x-4">
+                        <span class="px-4 py-2 border-2 border-primary text-primary">AI</span>
+                        <span class="px-4 py-2 border-2 border-accent text-accent">Healthcare</span>
                     </div>
                 </div>
+
+                <!-- Repeat project cards with similar structure -->
             </div>
 
-            <div class="mt-16 text-center">
-                <h2 class="text-3xl font-bold mb-6">Our Technology Stack</h2>
-                <div class="flex justify-center space-x-8 opacity-70">
-                    <img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React" class="h-12">
-                    <img src="https://cdn.worldvectorlogo.com/logos/python-5.svg" alt="Python" class="h-12">
-                    <img src="https://cdn.worldvectorlogo.com/logos/aws-2.svg" alt="AWS" class="h-12">
-                    <img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node.js" class="h-12">
+            <div class="mt-24 text-center">
+                <h2 class="text-4xl font-bold mb-12">Our Stack</h2>
+                <div class="tech-icon-container">
+                    <img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React" class="h-16 tech-stack-icon">
+                    <img src="https://cdn.worldvectorlogo.com/logos/python-5.svg" alt="Python" class="h-16 tech-stack-icon">
+                    <img src="https://cdn.worldvectorlogo.com/logos/aws-2.svg" alt="AWS" class="h-16 tech-stack-icon">
+                    <img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node.js" class="h-16 tech-stack-icon">
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-gray-900 text-white py-8">
-        <div class="container mx-auto px-4">
+    <footer class="bg-white py-12 border-t-4 border-accent">
+        <div class="container mx-auto px-6">
             <div class="flex justify-between items-center">
-                <p>&copy; 2024 Phoenix32. All rights reserved.</p>
-                <div class="flex space-x-6">
-                    <a href="#" class="hover:text-blue-400">Privacy Policy</a>
-                    <a href="#" class="hover:text-blue-400">Terms of Service</a>
+                <p class="text-gray-600">&copy; 2024 Phoenix32</p>
+                <div class="flex space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-primary transition">Privacy</a>
+                    <a href="#" class="text-gray-600 hover:text-primary transition">Terms</a>
                 </div>
             </div>
         </div>
