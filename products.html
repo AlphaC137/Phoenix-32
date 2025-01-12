@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phoenix32 Marketplace</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
 
@@ -29,9 +28,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        .hidden-card {
+            display: none;
+        }
     </style>
 </head>
 <body>
+    <!-- Header remains the same -->
     <header class="fixed w-full bg-white shadow-lg z-50">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between py-4">
@@ -40,9 +44,9 @@
                     <h1 class="text-xl font-bold gradient-text">Phoenix32 Market</h1>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <input type="search" placeholder="Search products..." class="px-4 py-2 rounded-full border focus:outline-none focus:border-blue-500">
+                    <input type="search" id="searchInput" placeholder="Search products..." class="px-4 py-2 rounded-full border focus:outline-none focus:border-blue-500">
                     <nav class="hidden md:flex items-center space-x-8">
-                        <a href="#" class="text-gray-800 hover:text-blue-600">Browse</a>
+                        <a href="index.html" class="text-gray-800 hover:text-blue-600">Home</a>
                         <a href="/Phoenix-32/commingsoon.html" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">Sign In</a>
                     </nav>
                 </div>
@@ -60,38 +64,35 @@
                         <h3 class="font-medium mb-2">Category</h3>
                         <div class="space-y-2">
                             <label class="flex items-center">
-                                <input type="checkbox" class="mr-2"> Laptops
+                                <input type="checkbox" class="mr-2 category-filter" value="laptop"> Laptops
                             </label>
                             <label class="flex items-center">
-                                <input type="checkbox" class="mr-2"> Phones
+                                <input type="checkbox" class="mr-2 category-filter" value="phone"> Phones
                             </label>
                             <label class="flex items-center">
-                                <input type="checkbox" class="mr-2"> Desktops
-                            </label>
-                            <label class="flex items-center">
-                                <input type="checkbox" class="mr-2"> Accessories
+                                <input type="checkbox" class="mr-2 category-filter" value="desktop"> Desktops
                             </label>
                         </div>
                     </div>
                     <div>
                         <h3 class="font-medium mb-2">Price Range</h3>
-                        <input type="range" class="w-full" min="0" max="3000">
+                        <input type="range" id="priceRange" class="w-full" min="0" max="3000" value="3000">
                         <div class="flex justify-between text-sm text-gray-600">
                             <span>R0</span>
-                            <span>R3000+</span>
+                            <span id="priceValue">R3000+</span>
                         </div>
                     </div>
                     <div>
                         <h3 class="font-medium mb-2">Condition</h3>
                         <div class="space-y-2">
                             <label class="flex items-center">
-                                <input type="checkbox" class="mr-2"> New
+                                <input type="checkbox" class="mr-2 condition-filter" value="new"> New
                             </label>
                             <label class="flex items-center">
-                                <input type="checkbox" class="mr-2"> Like New
+                                <input type="checkbox" class="mr-2 condition-filter" value="like-new"> Like New
                             </label>
                             <label class="flex items-center">
-                                <input type="checkbox" class="mr-2"> Used
+                                <input type="checkbox" class="mr-2 condition-filter" value="used"> Used
                             </label>
                         </div>
                     </div>
@@ -102,16 +103,15 @@
             <div class="flex-1">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-2xl font-bold">Featured Listings</h2>
-                    <select class="px-4 py-2 rounded-lg border">
-                        <option>Latest</option>
-                        <option>Price: Low to High</option>
-                        <option>Price: High to Low</option>
+                    <select id="sortSelect" class="px-4 py-2 rounded-lg border">
+                        <option value="latest">Latest</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
                     </select>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-6">
-                    <!-- Listing Cards -->
-                    <div class="bg-white rounded-2xl shadow-2xl product-card">
+                <div id="productGrid" class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-2xl shadow-2xl product-card" data-category="laptop" data-condition="like-new" data-price="1499">
                         <div class="relative">
                             <img src="/api/placeholder/400/300" alt="Used Quantum Laptop" class="rounded-t-lg w-full h-48 object-cover">
                             <span class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm">Like New</span>
@@ -132,7 +132,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-2xl shadow-2xl product-card">
+                    <div class="bg-white rounded-2xl shadow-2xl product-card" data-category="desktop" data-condition="used" data-price="1899">
                         <div class="relative">
                             <img src="/api/placeholder/400/300" alt="Gaming Desktop" class="rounded-t-lg w-full h-48 object-cover">
                             <span class="absolute top-4 right-4 bg-purple-500 text-white px-3 py-1 rounded-full text-sm">Used</span>
@@ -153,7 +153,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-2xl shadow-2xl product-card">
+                    <div class="bg-white rounded-2xl shadow-2xl product-card" data-category="phone" data-condition="new" data-price="999">
                         <div class="relative">
                             <img src="/api/placeholder/400/300" alt="Horizon Phone" class="rounded-t-lg w-full h-48 object-cover">
                             <span class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm">New</span>
@@ -176,6 +176,33 @@
                 </div>
             </div>
         </div>
+        <section class="py-20">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">How Our Marketplace Works</h2>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">1</div>
+                        <h3 class="text-xl font-semibold mb-2">Select Product</h3>
+                        <p class="text-gray-600">Click on "Get Item" on the product you would like.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">2</div>
+                        <h3 class="text-xl font-semibold mb-2">Connect Via WhatsApp</h3>
+                        <p class="text-gray-600">The link will take you to our WhatsApp Account to confirm order.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">3</div>
+                        <h3 class="text-xl font-semibold mb-2">EFT Payment</h3>
+                        <p class="text-gray-600">Use EFT from any Bank account to ours & Provide proof of payment.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">4</div>
+                        <h3 class="text-xl font-semibold mb-2">Delivery</h3>
+                        <p class="text-gray-600">Get your product delivered straight to you.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="bg-white py-6 mt-12">
@@ -183,5 +210,85 @@
             <p class="text-gray-600">© 2024 Phoenix32 Marketplace. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Filter functionality
+        const categoryFilters = document.querySelectorAll('.category-filter');
+        const conditionFilters = document.querySelectorAll('.condition-filter');
+        const priceRange = document.getElementById('priceRange');
+        const priceValue = document.getElementById('priceValue');
+        const searchInput = document.getElementById('searchInput');
+        const sortSelect = document.getElementById('sortSelect');
+        const products = document.querySelectorAll('.product-card');
+
+        function updateFilters() {
+            const selectedCategories = Array.from(categoryFilters)
+                .filter(filter => filter.checked)
+                .map(filter => filter.value);
+
+            const selectedConditions = Array.from(conditionFilters)
+                .filter(filter => filter.checked)
+                .map(filter => filter.value);
+
+            const maxPrice = parseInt(priceRange.value);
+            const searchTerm = searchInput.value.toLowerCase();
+
+            products.forEach(product => {
+                const category = product.dataset.category;
+                const condition = product.dataset.condition;
+                const price = parseInt(product.dataset.price);
+                const title = product.querySelector('h3').textContent.toLowerCase();
+                const description = product.querySelector('p').textContent.toLowerCase();
+
+                const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(category);
+                const conditionMatch = selectedConditions.length === 0 || selectedConditions.includes(condition);
+                const priceMatch = price <= maxPrice;
+                const searchMatch = searchTerm === '' || 
+                    title.includes(searchTerm) || 
+                    description.includes(searchTerm);
+
+                if (categoryMatch && conditionMatch && priceMatch && searchMatch) {
+                    product.classList.remove('hidden-card');
+                } else {
+                    product.classList.add('hidden-card');
+                }
+            });
+
+            sortProducts();
+        }
+
+        function sortProducts() {
+            const productArray = Array.from(products);
+            const sortValue = sortSelect.value;
+
+            productArray.sort((a, b) => {
+                const priceA = parseInt(a.dataset.price);
+                const priceB = parseInt(b.dataset.price);
+
+                if (sortValue === 'price-low') {
+                    return priceA - priceB;
+                } else if (sortValue === 'price-high') {
+                    return priceB - priceA;
+                }
+                return 0;
+            });
+
+            const productGrid = document.getElementById('productGrid');
+            productArray.forEach(product => {
+                productGrid.appendChild(product);
+            });
+        }
+
+        // Event listeners
+        categoryFilters.forEach(filter => filter.addEventListener('change', updateFilters));
+        conditionFilters.forEach(filter => filter.addEventListener('change', updateFilters));
+        priceRange.addEventListener('input', (e) => {
+            const value = e.target.value;
+            priceValue.textContent = value >= 3000 ? 'R3000+' : `R${value}`;
+            updateFilters();
+        });
+        searchInput.addEventListener('input', updateFilters);
+        sortSelect.addEventListener('change', updateFilters);
+    </script>
 </body>
 </html>

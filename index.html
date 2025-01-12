@@ -71,14 +71,23 @@
             -webkit-backdrop-filter: blur(10px);
         }
 
+        
+
         .marquee {
             animation: marquee 20s linear infinite;
+            display: flex;
+            gap: 12px; /* Maintain spacing between logos */
         }
 
-        @keyframes marquee {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
+    @keyframes marquee {
+        0% {
+        transform: translateX(0);
+     }
+     100% {
+        transform: translateX(-100%);
+    }
+}
+
     </style>
 </head>
 <body class="bg-gray-50">
@@ -135,16 +144,31 @@
         <section class="py-20 bg-white">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold mb-4">Trusted by Industry Leaders</h2>
-                    <div class="relative overflow-hidden h-20">
-                        <div class="flex space-x-12 marquee items-center absolute">
-                            <img src="/api/placeholder/120/40" alt="Client 1" class="h-8 grayscale hover:grayscale-0 transition">
-                            <img src="/api/placeholder/120/40" alt="Client 2" class="h-8 grayscale hover:grayscale-0 transition">
-                            <img src="/api/placeholder/120/40" alt="Client 3" class="h-8 grayscale hover:grayscale-0 transition">
-                            <img src="/api/placeholder/120/40" alt="Client 4" class="h-8 grayscale hover:grayscale-0 transition">
-                            <img src="/api/placeholder/120/40" alt="Client 5" class="h-8 grayscale hover:grayscale-0 transition">
+                    <h2 class="text-4xl font-bold mb-4">Masters of Different Systems</h2>
+                    <div class="relative overflow-hidden h-40">
+                        <div class="flex space-x-40 marquee items-center absolute">
+                            <!-- First set of logos -->
+                            <img src="/Phoenix-32/pictures/canva.png" alt="Client 1" class="h-8 grayscale hover:grayscale-0 transition">
+                            <img src="/Phoenix-32/pictures/figma.png" alt="Client 2" class="h-8 grayscale hover:grayscale-0 transition">
+                            <img src="/Phoenix-32/pictures/Gohighlevel.png" alt="Client 3" class="h-8 grayscale hover:grayscale-0 transition">
+                            <img src="/Phoenix-32/pictures/Google_AdWords_(1).png" alt="Client 4" class="h-8 grayscale hover:grayscale-0 transition">
+                            <img src="/Phoenix-32/pictures/hubspot.png" alt="Client 5" class="h-8 grayscale hover:grayscale-0 transition">
+                            <img src="/Phoenix-32/pictures/Monday.png" alt="Client 6" class="h-8 grayscale hover:grayscale-0 transition">
+                            <img src="/Phoenix-32/pictures/pngwing.com.png" alt="Client 7" class="h-8 grayscale hover:grayscale-0 transition">
+                            <img src="/Phoenix-32/pictures/salesforce.png" alt="Client 8" class="h-8 grayscale hover:grayscale-0 transition">
+                            
+                            <!-- Duplicate set of logos -->
+                            <img src="/Phoenix-32/pictures/canva.png" alt="Client 1" class="h-8 grayscale hover:grayscale-0 transition">
+                            <img src="/Phoenix-32/pictures/figma.png" alt="Client 2" class="h-8 grayscale hover:grayscale-0 transition">
+                            <img src="/Phoenix-32/pictures/Gohighlevel.png" alt="Client 3" class="h-8 grayscale hover:grayscale-0 transition">
+                            <img src="/Phoenix-32/pictures/Google_AdWords_(1).png" alt="Client 4" class="h-8 grayscale hover:grayscale-0 transition">
+                            <img src="/Phoenix-32/pictures/hubspot.png" alt="Client 5" class="h-8 grayscale hover:grayscale-0 transition">
+                            <img src="/Phoenix-32/pictures/Monday.png" alt="Client 6" class="h-8 grayscale hover:grayscale-0 transition">
+                            <img src="/Phoenix-32/pictures/pngwing.com.png" alt="Client 7" class="h-8 grayscale hover:grayscale-0 transition">
+                            <img src="/Phoenix-32/pictures/salesforce.png" alt="Client 8" class="h-8 grayscale hover:grayscale-0 transition">
                         </div>
                     </div>
+                    
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
