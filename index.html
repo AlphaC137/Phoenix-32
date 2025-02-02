@@ -11,13 +11,14 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
         :root {
-            --primary: #2563eb;
-            --accent: #10b981;
-            --dark: #1e293b;
+            --primary: #000000;
+            --accent: #ff0000;
+            --dark: #020202cc;
         }
 
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #000000;
             scroll-behavior: smooth;
         }
 
@@ -28,7 +29,7 @@
         }
 
         .hero-gradient {
-            background: radial-gradient(circle at top right, var(--accent), var(--primary));
+            background: linear-gradient(135deg, #000000, #440000, #000000);
             position: relative;
             overflow: hidden;
         }
@@ -63,7 +64,7 @@
 
         .card-hover:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: #dc2626;
         }
 
         .nav-blur {
@@ -90,29 +91,29 @@
 
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-black-50">
     <header class="fixed w-full z-50 transition-all duration-300">
-        <div class="nav-blur bg-white/80 shadow-lg">
+        <div class="nav-blur bg-black/80 border-b border-red-900">
             <div class="container mx-auto px-4">
                 <div class="flex items-center justify-between py-4">
-                    <div class="flex items-center space-x-2">
+                    <div class="flex items-center space-x-3">
                         <a href="/Phoenix-32/index.html">
                         <img src="/Phoenix-32/pictures/Home/Logo/Luxury-gold-eagle-phoenix-logo-design-on-transparent-background-PNG.png" alt="Phoenix32 Logo" class="h-10">
                         </a>
-                        <span class="font-bold text-xl text-black">Phoenix32</span>
+                        <span class="font-bold text-xl text-red-600">Phoenix32</span>
                     </div>
                     <nav class="hidden md:flex items-center space-x-8">
                         <nav class="hidden md:flex items-center space-x-8">
-                            <a href="index.html" class="nav-link text-gray-800 hover:text-blue-600">Home</a>
-                            <a href="about.html" class="nav-link text-gray-800 hover:text-blue-600">About Us</a>
-                            <a href="services.html" class="nav-link text-gray-800 hover:text-blue-600">Services</a>
-                            <a href="blog.html" class="nav-link text-gray-800 hover:text-blue-600">Blog</a>
-                            <a href="portfolio.html" class="nav-link text-gray-800 hover:text-blue-600">Portfolio</a>
-                            <a href="careers.html" class="nav-link text-gray-800 hover:text-blue-600">Careers</a>
-                            <a href="products.html" class="nav-link text-gray-800 hover:text-blue-600">Products</a>
-                            <a href="contact.html" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition">Contact</a>
+                            <a href="index.html" class="text-gray-300 hover:text-red-500 transition-colors">Home</a>
+                            <a href="about.html" class="text-gray-300 hover:text-red-500 transition-colors">About Us</a>
+                            <a href="services.html" class="text-gray-300 hover:text-red-500 transition-colors">Services</a>
+                            <a href="blog.html" class="text-gray-300 hover:text-red-500 transition-colors">Blog</a>
+                            <a href="portfolio.html" class="text-gray-300 hover:text-red-500 transition-colors">Portfolio</a>
+                            <a href="careers.html" class="text-gray-300 hover:text-red-500 transition-colors">Careers</a>
+                            <a href="products.html" class="text-gray-300 hover:text-red-500 transition-colors">Products</a>
+                            <a href="contact.html" class="bg-red-700 hover:bg-red-800 px-6 py-2 rounded transition-colors">Contact</a>
                         </nav>
-                    <button class="md:hidden text-gray-600">
+                    <button class="md:hidden text-gray-300">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
                         </svg>
@@ -128,12 +129,12 @@
                 <div class="flex flex-col md:flex-row items-center">
                     <div class="md:w-1/2 text-white">
                         <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                            Transform Your Digital Future
+                            Elevate Your <span class="text-red-600">Digital</span> Future
                         </h1>
                         <p class="text-xl mb-8 text-gray-100">Unlock innovation with our cutting-edge tech solutions. We transform ideas into digital reality.</p>
                         <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                            <a href="/Phoenix-32/contact.html" class="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition text-center">Get Started</a>
-                            <a href="/Phoenix-32/services.html" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition text-center">Explore Services</a>
+                            <a href="/Phoenix-32/contact.html" class="bg-red-700 hover:bg-red-800 px-8 py-4 rounded text-center transition-colors">Get Started</a>
+                            <a href="/Phoenix-32/services.html" class="border border-red-700 hover:bg-red-900/20 px-8 py-4 rounded text-center transition-colors">Explore Services</a>
                         </div>
                     </div>
                     <div class="md:w-1/2 mt-12 md:mt-0 floating">
@@ -143,10 +144,10 @@
             </div>
         </section>
 
-        <section class="py-20 bg-white">
+        <section class="py-20 bg-zinc-900">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold mb-4">Masters of Different Systems</h2>
+                    <h2 class="text-white text-4xl font-bold mb-4">Masters of Different Systems</h2>
                     <div class="relative overflow-hidden h-12">
                         <div class="flex space-x-40 marquee items-center absolute">
                             <!-- First set of logos -->
@@ -174,68 +175,62 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="card-hover bg-white p-8 rounded-2xl shadow-lg">
-                        <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="bg-black p-8 rounded border border-red-900 card-hover">
+                        <div class="w-16 h-16 bg-red-900/90 rounded-xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
                             </svg>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4">Cloud Solutions</h3>
-                        <p class="text-gray-600">Scale your business with our enterprise-grade cloud infrastructure and services.</p>
+                        <h3 class="text-2xl font-bold mb-4 text-red-500">Cloud Solutions</h3>
+                        <p class="text-gray-400">Scale your business with our enterprise-grade cloud infrastructure and services.</p>
                     </div>
                     
-                    <div class="card-hover bg-white p-8 rounded-2xl shadow-lg">
-                        <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="bg-black p-8 rounded border border-red-900 card-hover">
+                        <div class="w-16 h-16 bg-red-900/20 rounded-xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                             </svg>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4">AI & Machine Learning</h3>
-                        <p class="text-gray-600">Leverage the power of AI to automate processes and gain valuable insights.</p>
+                        <h3 class="text-2xl font-bold mb-4 text-red-500">AI Integration</h3>
+                        <p class="text-gray-400">Advanced artificial intelligence solutions for business automation.</p>
                     </div>
                     
-                    <div class="card-hover bg-white p-8 rounded-2xl shadow-lg">
-                        <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="bg-black p-8 rounded border border-red-900 card-hover">
+                        <div class="w-16 h-16 bg-red-900/20 rounded-xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                             </svg>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4">Cybersecurity</h3>
-                        <p class="text-gray-600">Protect your digital assets with our advanced security solutions.</p>
+                        <h3 class="text-2xl font-bold mb-4 text-red-500">Cybersecurity</h3>
+                        <p class="text-gray-400">Comprehensive security protocols for enterprise protection.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-20 bg-gray-50">
+        <section class="py-20 bg-black">
             <div class="container mx-auto px-4">
                 <div class="max-w-3xl mx-auto text-center mb-16">
-                    <h2 class="text-4xl font-bold mb-4">Why Choose Phoenix32?</h2>
-                    <p class="text-xl text-gray-600">We combine technical expertise with business acumen to deliver solutions that drive real results.</p>
+                    <h2 class="text-white text-4xl font-bold mb-4">Why Choose <span class="text-red-600">Phoenix-32</span>?</h2>
+                    <p class="text-xl text-white">We combine technical expertise with business acumen to deliver solutions that drive real results.</p>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center card-hover">
-                        <div class="text-4xl font-bold text-blue-600 mb-2">
-                            <span class="counter">500</span>+
-                        </div>
-                        <p class="text-gray-600">Projects Delivered</p>
+                    <div class="text-center p-6 bg-zinc-900 rounded border border-red-900 card-hover">
+                        <div class="text-4xl font-bold text-red-600 mb-2 counter">500+</div>
+                        <p class="text-gray-400">Projects Delivered</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center card-hover">
-                        <div class="text-4xl font-bold text-blue-600 mb-2">
-                            <span class="counter">98</span>%
-                        </div>
-                        <p class="text-gray-600">Client Satisfaction</p>
+                    <div class="text-center p-6 bg-zinc-900 rounded border border-red-900 card-hover">
+                        <div class="text-4xl font-bold text-red-600 mb-2 counter">98%</div>
+                        <p class="text-gray-400">Client Satisfaction</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center card-hover">
-                        <div class="text-4xl font-bold text-blue-600 mb-2">
-                            <span class="counter">50</span>+
-                        </div>
-                        <p class="text-gray-600">Tech Experts</p>
+                    <div class="text-center p-6 bg-zinc-900 rounded border border-red-900 card-hover">
+                        <div class="text-4xl font-bold text-red-600 mb-2 counter">50+</div>
+                        <p class="text-gray-400">Tech Experts</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center card-hover">
-                        <div class="text-4xl font-bold text-blue-600 mb-2">24/7</div>
-                        <p class="text-gray-600">Support Available</p>
+                    <div class="text-center p-6 bg-zinc-900 rounded border border-red-900 card-hover">
+                        <div class="text-4xl font-bold text-red-600 mb-2">24/7</div>
+                        <p class="text-gray-400">Support Available</p>
                     </div>
                 </div>
             </div>
